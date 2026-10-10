@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DemoMVC.Models.SanPham>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<div class="container mt-4">
+    <h2>Danh sách sản phẩm</h2>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">
+            Thêm sản phẩm
+        </a>
+    </p>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Mã</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TenSanPham</td>
+                <td>@item.SoLuong</td>
+                <td>@item.Gia</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@item.Id">Sửa</a> |
+                    <a asp-action="Details"
+                       asp-route-id="@item.Id">Chi tiết</a> |
+                    <a asp-action="Delete"
+                       asp-route-id="@item.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
